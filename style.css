@@ -1,0 +1,103 @@
+@import "https://fonts.googleapis.com/css?family=Montserrat";
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+}
+body {
+  background-color: #505562;
+  color: #fff;
+  font-family: 'Montserrat', sans-serif;
+}
+.container {
+  width: 500px;
+  margin: 200px auto;
+}
+.header {
+  background-color: #2d2d37;
+  text-align: center;
+  padding: 1.75rem;
+}
+.header h1 {
+  font-size: 2.23rem;
+}
+.date{
+  background-color: #222;
+  text-align: right;
+  font-size: 0.75reml
+  padding: 0.75rem 2rem 0.75rem 0;
+}
+ul.currencies {
+  height: 500px;
+  background: #222;
+  padding: 0 1.5rem 1rem 1.5rem;
+}
+ul.currencies li {
+background-color: #2d2d37;
+border-radius: 5px;
+list-style: none;
+margin-bottom: 1rem;
+}
+ul.currencies li:last-child {
+   margin-bottom: 0;
+}
+
+ul.currencies li.base-currency {
+  background-color: #264d73;
+}
+.flag {
+  width: 60px;
+  height: 40px;
+  border: 1px solid #ffff;
+  vertical-align: top;
+}
+.info {
+  display: inline-block;
+  width: 78%;
+}
+.info .input span {
+  font-size: 1.5rem;
+  display: inline-block;
+  width: 4rem;
+  text-align: center;
+}
+
+.info .input input {
+  font-size: 1.5rem;
+  width: 78%;
+  background-color: transparent;
+  border: 2px solid #fff;
+  border-radius: 5px;
+  color: #fff;
+  padding: 0.3rem;
+  margin-bottom: 0.75rem;
+}
+ .info .currency-name {
+   font-size:  1rem;
+   font-weight: bold;
+   margin-bottom: 0.5rem;
+   margin-left: 10rem;
+ }
+
+ .info .base-currency {
+   font-size: 0.8rem;
+   margin-left: 4rem;
+ }
+
+.add-currency-btn {
+  background-color: #00b386;
+  color: #fff;
+  padding: 1.2rem;
+  font-weight: bold;
+  border: none;
+  border-top: 3px solid #222;
+  outline: none;
+  width: 100%;
+  cursor: pointer;
+  transition: background-color 0.25s;
+
+}

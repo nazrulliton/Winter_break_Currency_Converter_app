@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Currency Converter</title>
+    <link rel="stylesheet" href="/style.css">
+
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <h1>Currency Converter</h1>
+      </div>
+      <div class="date">30-12-2019</div>
+      <ul class="currencies">
+        <li class="base-currency" id="USD">
+          <img src="https://upload.wikimedia.org/wikipedia/en/thumb/a/a4/Flag_of_the_United_States.svg/1920px-Flag_of_the_United_States.svg.png" class="flag">
+          <div class="info">
+            <p class="input"><span class="currency-symbol">&#36;</span><input placeholder="0.00"></p>
+            <p class="currency-name">USD - US Dollar</p>
+            <p class="base-currency-rate">1USD = 1 USD</p>
+          </div>
+          <span class="close">&times;</span>
+        </li>
+        <li class="currency" id="JPY">
+          <img src="https://upload.wikimedia.org/wikipedia/en/thumb/9/9e/Flag_of_Japan.svg/1280px-Flag_of_Japan.svg.png" class="flag">
+          <div class="info">
+            <p class="input"><span class="currency-symbol">&#36;</span><input placeholder="0.00"></p>
+            <p class="currency-name">JPY - Japanese Yen</p>
+            <p class="base-currency-rate">1USD = 111.0401 JPY USD</p>
+          </div>
+          <span class="close">&times;</span>
+        </li>
+      </ul>
+
+
+
+      <ul ckass="add-currency-list"></ul>
+      <button class="add-currency-btn">Add Currency</button>
+    </div>
+    <script src="main.js"></script>
+  </body>
+</html>
