@@ -156,7 +156,7 @@ ul.add-currency-list li span {
 .add-currency-btn i {
   position: absolute;
   top: 0.6rem;
-  left: 1.25rem;
+  left: 30%;
   font-size: 2rem;
   opacity: o;
   transition: all 0.25s;
@@ -164,6 +164,7 @@ ul.add-currency-list li span {
 
 .add-currency-btn:hover i {
     opacity: 1;
+    left: 1.25rem;
 }
 
 .add-currency-btn:hover {
