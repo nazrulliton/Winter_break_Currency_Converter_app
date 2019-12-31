@@ -16,6 +16,8 @@ body {
 .container {
   width: 500px;
   margin: 200px auto;
+  overflow-x: hidden;
+  position: relative;
 }
 .header {
   background-color: #2d2d37;
@@ -32,15 +34,17 @@ body {
   padding: 0.75rem 2rem 0.75rem 0;
 }
 ul.currencies {
-  height: 500px;
+  height: calc(100vh - 40px - 100px - 40px - 58px);
   background: #222;
   padding: 0 1.5rem 1rem 1.5rem;
+  overflow-y: auto;
 }
 ul.currencies li {
 background-color: #2d2d37;
 border-radius: 5px;
 list-style: none;
 margin-bottom: 1rem;
+position: relative;
 }
 ul.currencies li:last-child {
    margin-bottom: 0;
@@ -80,14 +84,62 @@ ul.currencies li.base-currency {
    font-size:  1rem;
    font-weight: bold;
    margin-bottom: 0.5rem;
-   margin-left: 10rem;
- }
-
- .info .base-currency {
-   font-size: 0.8rem;
    margin-left: 4rem;
  }
 
+ .info .base-currency-rate {
+   font-size: 0.8rem;
+   margin-left: 4rem;
+ }
+ul.currencies li .close {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 0 0.5rem;
+  font-size: 1.5rem;
+  color: #666;
+  cursor: pointer;
+}
+ul.currencies li .close:hover{
+  color: #fff;
+}
+ul.currencies::-webkit-scrollbar {
+  width: 5px;
+}
+ul.currencies::-webkit-scrollbar-thumb {
+  background-color: #2d2d37;
+  border-bottom: 1rem solid #222;
+}
+ul.add-currency-list {
+  position: absolute;
+  bottom: 54px;
+  background-color: #f1f1f1;
+  color: #333;
+  width: 100%;
+  height: calc(100vh - 40px - 100px - 55px);
+  overflow-y:auto;
+  transition: all 0.25s;
+  left: 105%;
+}
+
+ul.add-currency-list li {
+  list-style: none;
+  padding: 0.75rem;
+  border-bottom: 1px solid #ddd;
+}
+ul.add-currency-list li.disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+ul.add-currency-list li  .flag {
+  width: 3rem;
+  height: 2rem;
+  vertical-align: middle;
+}
+ul.add-currency-list li span {
+  margin-left: 1rem;
+  font-weight: bold;
+}
 .add-currency-btn {
   background-color: #00b386;
   color: #fff;
@@ -99,5 +151,10 @@ ul.currencies li.base-currency {
   width: 100%;
   cursor: pointer;
   transition: background-color 0.25s;
-
+}
+.add-currency-btn:hover {
+  background-color: #d9534f;
+}
+.add-currency-btn:hover + ul.add-currency-list {
+  left:0;
 }
