@@ -179,3 +179,17 @@ ul.add-currency-list li span {
 }
 .add-currency-btn.open + ul.add-currency-list li:hover {
     background-color: #ddd;
+}
+
+@media(maxwidth: 600px) {
+  html { font-size: 14px;}
+  .container { width: 100%; margin: 0 auto;}
+  ul.currencies { height: calc(100vh - 83px - 34px - 51px);}
+  .header h1 {font-size: 2rem;}
+  .flag { width: 3rem; height: 2rem;}
+  .info .input span { font-size: 1.25rem; width: 3.5rem;}
+  .info .input input {font-size: 1.25rem; width: 76%;}
+  .info .base-currency-rate {margin-left: 3.5rem;}
+  ul.add-currency-list {bottom:48px; height: calc(100vh - 80px - 51px);}
+  .add-currency-button { left: 25%; top:0.65rem;}
+}
