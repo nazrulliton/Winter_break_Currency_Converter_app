@@ -151,7 +151,21 @@ ul.add-currency-list li span {
   width: 100%;
   cursor: pointer;
   transition: background-color 0.25s;
+  position: relative;
 }
+.add-currency-btn i {
+  position: absolute;
+  top: 0.6rem;
+  left: 1.25rem;
+  font-size: 2rem;
+  opacity: o;
+  transition: all 0.25s;
+}
+
+.add-currency-btn:hover i {
+    opacity: 1;
+}
+
 .add-currency-btn:hover {
   background-color: #d9534f;
 }
