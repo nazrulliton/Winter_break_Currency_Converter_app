@@ -18,6 +18,7 @@ body {
   margin: 200px auto;
   overflow-x: hidden;
   position: relative;
+  user-select: none;
 }
 .header {
   background-color: #2d2d37;
@@ -161,15 +162,20 @@ ul.add-currency-list li span {
   opacity: o;
   transition: all 0.25s;
 }
+.add-currency-btn.open{
+  background-color: #d9534f;
+}
 
-.add-currency-btn:hover i {
+.add-currency-btn.open i {
     opacity: 1;
     left: 1.25rem;
 }
 
-.add-currency-btn:hover {
+/* .add-currency-btnhover {
   background-color: #d9534f;
-}
-.add-currency-btn:hover + ul.add-currency-list {
+} */
+.add-currency-btn.open + ul.add-currency-list {
   left:0;
 }
+.add-currency-btn.open + ul.add-currency-list li:hover {
+    background-color: #ddd;
