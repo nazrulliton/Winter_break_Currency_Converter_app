@@ -1,7 +1,7 @@
 //global variables
 
 const addCurrencyBtn = document.querySelector(".add-currency-btn");
-const addCurrencyList = document.querySelector(".add-curency-list");
+const addCurrencyList = document.querySelector(".add-currency-list");
 const currencies = [
   {
     name: "US Dollar",
