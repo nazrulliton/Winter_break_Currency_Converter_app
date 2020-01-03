@@ -23,12 +23,10 @@ function addCurrencyBtnClick(event) {
 // Auxillary Functions
 
 function populateAddCurrencyList() {
-  for (let i=0; i<currencies.length; i++) {
+  for ( var i = 0; i < currencies.length; i++) {
     addCurrencyList.insertAdjacentHTML(
-      'beforeend', `<li data-currency="USD">
-    <img src="https://upload.wikimedia.org/wikipedia/en/thumb/a/a4/Flag_of_the_United_States.svg/1920px-Flag_of_the_United_States.svg.png" class="flag"><span>USD - US Dollar</span>
-    </li>`
-  );
+      'beforeend', '<li data-currency="MXN"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Flag_of_Mexico.svg/1920px-Flag_of_Mexico.svg.png" class="flag"><span>JPY - Japanese Yen</span></li>'
+    );
   }
 }
 
