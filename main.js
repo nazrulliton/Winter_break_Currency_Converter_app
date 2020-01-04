@@ -217,7 +217,10 @@ function addCurrencyBtnClick(event) {
 function populateAddCurrencyList() {
   for ( var i = 0; i < currencies.length; i++) {
     addCurrencyList.insertAdjacentHTML(
-      'beforeend', '<li data-currency=${currencies[i].abbreviation}><img src=${currencies[i].flagURL}><span>${currencies[i].abbreviation}  ${currencies[i].name}</span></li>'
+      'beforeend',
+      `<li data-currency=${currencies[i].abbreviation}>
+      <img src=${currencies[i].flagURL}><span>${currencies[i].abbreviation}  ${currencies[i].name}</span>
+      </li>`
     );
   }
 }
