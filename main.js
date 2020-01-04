@@ -9,12 +9,12 @@ const currencies = [
    symbol: "\u0024",
    flagURL: "http://www.geonames.org/flags/l/us.gif"
  },
- {
-   name: "Euro",
-   abbreviation: "EUR",
-   symbol: "\u20AC",
-   flagURL: "https://upload.wikimedia.org/wikipedia/commons/b/b7/Flag_of_Europe.svg"
- },
+ // {
+ //   name: "Euro",
+ //   abbreviation: "EUR",
+ //   symbol: "\u20AC",
+ //   flagURL: "https://upload.wikimedia.org/wikipedia/commons/b/b7/Flag_of_Europe.svg"
+ // },
  {
    name: "Japanese Yen",
    abbreviation: "JPY",
@@ -214,15 +214,15 @@ function addCurrencyBtnClick(event) {
 
 // Auxillary Functions
 
-function populateAddCurrencyList() {
+function populateAddCyrrencyList() {
   for ( var i = 0; i < currencies.length; i++) {
     addCurrencyList.insertAdjacentHTML(
       'beforeend',
       `<li data-currency=${currencies[i].abbreviation}>
-      <img src=${currencies[i].flagURL}><span>${currencies[i].abbreviation}  ${currencies[i].name}</span>
+      <img src=${currencies[i].flagURL}><span>${currencies[i].abbreviation} - ${currencies[i].name}</span>
       </li>`
     );
   }
 }
 
-populateAddCurrencyList();
+populateAddCyrrencyList();
