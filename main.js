@@ -2,24 +2,35 @@
 
 const addCurrencyBtn = document.querySelector(".add-currency-btn");
 const addCurrencyList = document.querySelector(".add-currency-list");
+const currenciesList = document.querySelector(".currencies");
+
+const initiallyDisplayedCurrencies = [ "USD", "EUR", "GBP", "JPY", "RUB"];
+let baseCurrency;
+let baseCurrencyAmount;
+
+
+
 const currencies = [
   {
    name: "US Dollar",
    abbreviation: "USD",
    symbol: "\u0024",
-   flagURL: "http://www.geonames.org/flags/l/us.gif"
+   flagURL: "http://www.geonames.org/flags/l/us.gif",
+   rate: 1.1325
  },
- // {
- //   name: "Euro",
- //   abbreviation: "EUR",
- //   symbol: "\u20AC",
- //   flagURL: "https://upload.wikimedia.org/wikipedia/commons/b/b7/Flag_of_Europe.svg"
- // },
+ {
+   name: "Euro",
+   abbreviation: "EUR",
+   symbol: "\u20AC",
+   flagURL: "https://upload.wikimedia.org/wikipedia/commons/b/b7/Flag_of_Europe.svg",
+   rate: 1
+ },
  {
    name: "Japanese Yen",
    abbreviation: "JPY",
    symbol: "\u00A5",
-   flagURL: "http://www.geonames.org/flags/l/jp.gif"
+   flagURL: "http://www.geonames.org/flags/l/jp.gif",
+   rate: 125.5600
  },
  {
    name: "British Pound",
@@ -224,5 +235,12 @@ function populateAddCyrrencyList() {
     );
   }
 }
+function populateCurrenciesList() {
+  for ()
+}
+
+
+
+
 
 populateAddCyrrencyList();
