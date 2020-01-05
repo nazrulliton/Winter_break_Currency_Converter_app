@@ -236,6 +236,34 @@ function addCurrencyListClick(event) {
   }
 }
 
+// remove currency from list and remove shaded css on main list.
+currenciesList.addEventListener("click", currenciesListClick);
+
+function currenciesListClick(event) {
+  if(event.target.classList.contains("close")) {
+    const parentNode = event.target.parentNode;
+    parentNode.remove();
+    addCurrencyList.querySelector(`[data-currency=${parentNode.id}]`).classList.remove("disabled");
+    if(parentNode.classList.contains("base-currency")) {
+      const newBaseCurrencyLI = currenciesList.querySelector(".currency");
+      if(newBaseCurrencyLI) {
+        setNewBaseCurrency(newBaseCurrencyLI);
+        baseCurrencyAmount = Number(newBaseCurrencyLI.querySelector(".input input").value);
+      }
+    }
+  }
+}
+
+function setNewBaseCurrency(newBaseCurrencyLI) {
+  newBaseCurrencyLI.classList.add("base-currency");
+  baseCurrency = newBaseCurrencyLI.id;
+  const baseCurrencyRate = currencies.find(currency => currency.abbreviation===baseCurrency).rate;
+  currenciesList.querySelectorAll(".currency").forEach(currencyLI => {
+    const currencyRate = currencies.find(currency => currency.abbreviation===currencyLI.id).rate;
+    const exchangeRate = currencyLI.id===baseCurrency ? 1 : (currencyRate/baseCurrencyRate).toFixed(4);
+    currencyLI.querySelector(".base-currency-rate").textContent = `1 ${baseCurrency} = ${exchangeRate} ${currencyLI.id}`;
+  });
+}
 // Auxillary Functions
 
 function populateAddCurrencyList() {
