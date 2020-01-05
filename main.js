@@ -4,6 +4,8 @@ const addCurrencyBtn = document.querySelector(".add-currency-btn");
 const addCurrencyList = document.querySelector(".add-currency-list");
 const currenciesList = document.querySelector(".currencies");
 
+const dataURL = "https://api.exchangeratesapi.io/latest"
+
 const initiallyDisplayedCurrencies = [ "USD", "EUR", "GBP", "JPY", "RUB"];
 let baseCurrency;
 let baseCurrencyAmount;
@@ -13,43 +15,37 @@ let currencies = [
     name: "US Dollar",
     abbreviation: "USD",
     symbol: "\u0024",
-    flagURL: "http://www.geonames.org/flags/l/us.gif",
-    rate: 1.1325
+    flagURL: "http://www.geonames.org/flags/l/us.gif"
   },
   {
     name: "Euro",
     abbreviation: "EUR",
     symbol: "\u20AC",
-    flagURL: "http://www.geonames.org/flags/l/uk.gif",
-    rate: 1
+    flagURL: "http://www.geonames.org/flags/l/uk.gif"
   },
   {
     name: "Japanese Yen",
     abbreviation: "JPY",
     symbol: "\u00A5",
-    flagURL: "http://www.geonames.org/flags/l/jp.gif",
-    rate: 124.5600
+    flagURL: "http://www.geonames.org/flags/l/jp.gif"
   },
   {
     name: "British Pound",
     abbreviation: "GBP",
     symbol: "\u00A3",
-    flagURL: "http://www.geonames.org/flags/l/uk.gif",
-    rate: 0.8726
+    flagURL: "http://www.geonames.org/flags/l/uk.gif"
   },
   {
     name: "Australian Dollar",
     abbreviation: "AUD",
     symbol: "\u0024",
-    flagURL: "http://www.geonames.org/flags/l/au.gif",
-    rate: 1.5923
+    flagURL: "http://www.geonames.org/flags/l/au.gif"
   },
   {
     name: "Canadian Dollar",
     abbreviation: "CAD",
     symbol: "\u0024",
-    flagURL: "http://www.geonames.org/flags/l/ca.gif",
-    rate: 1.4976
+    flagURL: "http://www.geonames.org/flags/l/ca.gif"
   },
   {
     name: "Swiss Franc",
@@ -115,8 +111,7 @@ let currencies = [
     name: "Russian Ruble",
     abbreviation: "RUB",
     symbol: "\u20BD",
-    flagURL: "http://www.geonames.org/flags/l/ru.gif",
-    rate: 74
+    flagURL: "http://www.geonames.org/flags/l/ru.gif"
   },
   {
     name: "Indian Rupee",
@@ -264,6 +259,44 @@ function setNewBaseCurrency(newBaseCurrencyLI) {
     currencyLI.querySelector(".base-currency-rate").textContent = `1 ${baseCurrency} = ${exchangeRate} ${currencyLI.id}`;
   });
 }
+
+currenciesList.addEventListener("input", currenciesListInputChange);
+
+function currenciesListInputChange(event) {
+  const isNewBaseCurrency = event.target.closest("li").id!==baseCurrency;
+  if(isNewBaseCurrency) {
+    currenciesList.querySelector(`#${baseCurrency}`).classList.remove("base-currency");
+    setNewBaseCurrency(event.target.closest("li"));
+  }
+  const newBaseCurrencyAmount = isNaN(event.target.value) ? 0 : Number(event.target.value);
+  if(baseCurrencyAmount!==newBaseCurrencyAmount || isNewBaseCurrency) {
+    baseCurrencyAmount = newBaseCurrencyAmount;
+    const baseCurrencyRate = currencies.find(currency => currency.abbreviation===baseCurrency).rate;
+    currenciesList.querySelectorAll(".currency").forEach(currencyLI => {
+      if(currencyLI.id!==baseCurrency) {
+        const currencyRate = currencies.find(currency => currency.abbreviation===currencyLI.id).rate;
+        const exchangeRate = currencyLI.id===baseCurrency ? 1 : (currencyRate/baseCurrencyRate).toFixed(4);
+        currencyLI.querySelector(".input input").value = exchangeRate*baseCurrencyAmount!==0 ? (exchangeRate*baseCurrencyAmount).toFixed(4) : "";
+      }
+    });
+  }
+}
+
+currenciesList.addEventListener("focusout", currenciesListFocusOut);
+
+function currenciesListFocusOut(event) {
+  const inputValue = event.target.value;
+  if (isNan(inputValue)|| Number(inputValue)===0)event.target.value="";
+  else event.target.value = Number(inputValue.toFixed(4));
+}
+
+currenciesList.addEventListener("keydown", currenciesListKeyDown);
+
+function currenciesListKeyDown(event){
+  if (event,key==="Enter")event.target.blur();
+}
+
+
 // Auxillary Functions
 
 function populateAddCurrencyList() {
@@ -306,5 +339,14 @@ function newCurrenciesListItem(currency) {
   );
 }
 
-populateAddCurrencyList();
-populateCurrenciesList();
+fetch(dataURL)
+.then(res => res.json())
+.then(data => {
+  document.querySelector(".date").textContent = data.date;
+  data.rates["EUR"] = 1;
+  currencies = currencies.filter(currency => data.rates[currency.abbreviation]);
+  currencies.forEach(currency => currency.rate = data.rates[currency.abbreviation]);
+  populateAddCurrencyList();
+  populateCurrenciesList();
+})
+.catch(err => console.log(err));
