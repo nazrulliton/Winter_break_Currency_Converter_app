@@ -218,11 +218,22 @@ let currencies = [
 
 
 // Event Listeners
-
+//add currency button function to open all countries list
 addCurrencyBtn.addEventListener("click", addCurrencyBtnClick);
 
 function addCurrencyBtnClick(event) {
   addCurrencyBtn.classList.toggle("open");
+}
+
+//add to currency list
+addCurrencyList.addEventListener("click", addCurrencyListClick);
+
+function addCurrencyListClick(event) {
+  const clickedListItem = event.target.closest("li");
+  if(!clickedListItem.classList.contains("disabled")){
+    const newCurrency = currencies.find(c => c.abbreviation===clickedListItem.getAttribute("data-currency"));
+    if(newCurrency) newCurrenciesListItem(newCurrency);
+  }
 }
 
 // Auxillary Functions
